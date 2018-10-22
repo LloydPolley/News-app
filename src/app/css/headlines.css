@@ -1,0 +1,27 @@
+body {
+  padding: 2em; }
+
+.center {
+  margin: 0 auto;
+  max-width: 1200px; }
+
+.headlines #headlines-container {
+  display: flex;
+  overflow: scroll;
+  position: relative; }
+  .headlines #headlines-container .newsElement {
+    margin-right: 1em;
+    position: relative; }
+    .headlines #headlines-container .newsElement .newTextContent {
+      color: white;
+      position: absolute;
+      top: 0;
+      left: 0; }
+    .headlines #headlines-container .newsElement img {
+      width: 600px; }
+    .headlines #headlines-container .newsElement a {
+      text-decoration: none;
+      color: black; }
+    .headlines #headlines-container .newsElement .timeDateContainer {
+      display: flex;
+      justify-content: space-between; }

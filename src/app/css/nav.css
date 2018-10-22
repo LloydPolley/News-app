@@ -1,0 +1,6 @@
+nav {
+  width: 100%; }
+  nav .logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 100px; }
