@@ -36,11 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 let image = document.createElement('img');
                 image.setAttribute('src', news.urlToImage);
 
-                let containerText = document.createElement('div');
-                containerText.className = 'newTextContent';
                 let title = document.createElement('h1');
                 title.innerHTML = news.title;
-
 
                 let timeDateContainer = document.createElement('div');
                 timeDateContainer.className = 'timeDateContainer';
@@ -60,16 +57,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 timeDateContainer.appendChild(time);
 
                 //New text wrapper
-                containerText.appendChild(timeDateContainer);
-                containerText.appendChild(title);
-                containerText.appendChild(description);
+                container.appendChild(timeDateContainer);
+                container.appendChild(title);
+                container.appendChild(description);
 
                 //Creating img as link
                 anchor.appendChild(image);
 
                 //News wrapper
                 container.appendChild(anchor);
-                container.appendChild(containerText);
 
                 //Append news items to headline container
                 headlineContainer.appendChild(container);

@@ -16,12 +16,27 @@ body {
         .newsElement {
             margin-right: 1em;
             position: relative;
-            
-            .newTextContent{
-                color: white;
+            &:hover{
+                h1{
+                    transform: translatey(-100%);
+                }
+                p{
+                    opacity: 1;
+                    transform: translatey(-10%);
+                }
+            }
+            h1, p, .timeDateContainer{
                 position: absolute;
-                top: 0;
-                left: 0;
+                color: white;
+            }
+            h1{
+                bottom: 15%;
+                left: 2%;
+            }
+            p{
+                opacity: 0;
+                bottom: 0;
+                left: 2%;
             }
             img{
                 width: 600px;
