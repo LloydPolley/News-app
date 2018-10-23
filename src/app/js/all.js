@@ -8,72 +8,91 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const newsApiKey = '&apiKey=b0223e247363421fafcc6d77736eff92';
 
-    const searchButton = document.querySelector('#searchButton');
-    const searchInput = document.querySelector('#newsSearch');
+    const newsDropDown = document.querySelector('#newsSourceSelection');
 
     const news = {
-        async getNews(url) {
+        async getHeadlines(url) {
             let response = await fetch(url);
             let jsonResponse = await response.json();
             let newsItemsArray = jsonResponse.articles;
-    
+
             console.log(url);
             console.log(newsItemsArray);
-            this.displayHeadlines(newsItemsArray);
+            displayNews.Headlines(newsItemsArray);
         },
-        displayHeadlines(newsArray){
+        newsSelection(){
+            let value = document.querySelector('#newsSourceSelection');
+            let valueOption = value.options[value.selectedIndex].getAttribute('data-src');
+            let final = 'sources=' + valueOption;
+            
+            
+            console.log(valueOption);
+
+            return 'sources=' + valueOption;
+        }
+    };
+
+    const displayNews = {
+        Headlines(newsArray) {
             const headlineContainer = document.querySelector('#headlines-container');
 
             newsArray.map((news, index) => {
 
+                // 1
                 let container = document.createElement('div');
                 container.className = 'newsElement';
+                headlineContainer.appendChild(container);
 
+                // 2
+                let image = document.createElement('img');
+                image.setAttribute('src', news.urlToImage);
+                container.appendChild(image);
+
+                // 3
                 let anchor = document.createElement('a');
                 anchor.setAttribute('href', news.url);
                 anchor.setAttribute('title', 'See article');
+                anchor.setAttribute('target', '_blank');
+                container.appendChild(anchor);
 
-                let image = document.createElement('img');
-                image.setAttribute('src', news.urlToImage);
+                // 4
+                let overlay = document.createElement('div');
+                overlay.className = 'overlay';
+                anchor.appendChild(overlay);
+
+                // 5
+                let contentContainer = document.createElement('div');
+                contentContainer.className = 'contentContainer';
+                overlay.appendChild(contentContainer);
 
                 let title = document.createElement('h1');
                 title.innerHTML = news.title;
+                contentContainer.appendChild(title);
+
+                let description = document.createElement('p');
+                description.innerHTML = news.description;
+                contentContainer.appendChild(description);
 
                 let timeDateContainer = document.createElement('div');
                 timeDateContainer.className = 'timeDateContainer';
                 let dateTime = news.publishedAt;
-                let dateValue = dateTime.slice(0,10);
-                let timeValue = dateTime.slice(11,16);
+                let dateValue = dateTime.slice(0, 10);
+                let timeValue = dateTime.slice(11, 16);
 
                 let date = document.createElement('p');
                 date.innerHTML = dateValue;
                 let time = document.createElement('p');
                 time.innerHTML = timeValue;
-
-                let description = document.createElement('p');
-                description.innerHTML = news.description;
-
-                timeDateContainer.appendChild(date);
-                timeDateContainer.appendChild(time);
-
-                //New text wrapper
-                container.appendChild(timeDateContainer);
-                container.appendChild(title);
-                container.appendChild(description);
-
-                //Creating img as link
-                anchor.appendChild(image);
-
-                //News wrapper
-                container.appendChild(anchor);
-
-                //Append news items to headline container
-                headlineContainer.appendChild(container);
             });
         }
+    }
+
+    news.getHeadlines(`${newsHeadlines}${bbc}${newsApiKey}`);
+    // news.getHeadlines(`${newsEverything}${news.newsSelection()}${newsApiKey}`);
+
+    newsDropDown.onchange = function (){
+        const headlineContainer = document.querySelector('#headlines-container');
     };
 
-    news.getNews(`${newsHeadlines}${bbc}${newsApiKey}`);
 
 });
-

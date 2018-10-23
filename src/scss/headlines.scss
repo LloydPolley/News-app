@@ -16,41 +16,74 @@ body {
         .newsElement {
             margin-right: 1em;
             position: relative;
-            &:hover{
-                h1{
-                    transform: translatey(-100%);
-                }
-                p{
-                    opacity: 1;
-                    transform: translatey(-10%);
-                }
-            }
-            h1, p, .timeDateContainer{
-                position: absolute;
-                color: white;
-            }
-            h1{
-                bottom: 15%;
-                left: 2%;
-            }
-            p{
-                opacity: 0;
-                bottom: 0;
-                left: 2%;
-            }
-            img{
-                width: 600px;
+            transition: 1s all;
+            background-color: grey;
+
+            width: 500px;
+            height: 400px;
+
+
+            img {
+                // width: 500px;
+                // height: 400px;
+                max-width: 500px;
+                max-height: 400px;
+                display: block;
+                object-fit: cover;
+                overflow: hidden;
             }
 
             a {
                 text-decoration: none;
-                color: black;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
             }
 
-            .timeDateContainer {
-                display: flex;
-                justify-content: space-between;
+            .overlay {
+                position: relative;
+                transition: .5s all;
+                height: 100%;
+                width: 100%;
+                background-color: rgba(0, 0, 0, .2);
 
+                .contentContainer {
+                    position: absolute;
+                    color: white;
+
+                    top: 70%;
+                    left: 3%;
+                    transition: .2s all;
+
+                    h1 {
+                        margin-top: 0;
+                    }
+
+                    p {
+                        opacity: 0;
+                        animation: 1s ease all;
+                        max-width: 70%;
+                        transition: .2s all;
+                    }
+                }
+            }
+
+            &:hover {
+                .overlay {
+                    background-color: rgba(0, 0, 0, .5);
+
+                    .contentContainer {
+                        transform: translateY(-50%);
+
+                        h1 {}
+
+                        p {
+                            opacity: 1;
+                        }
+                    }
+                }
             }
         }
     }
