@@ -26,10 +26,11 @@ body {
             img {
                 // width: 500px;
                 // height: 400px;
-                max-width: 500px;
-                max-height: 400px;
+                width: 500px;
+                height: 400px;
                 display: block;
                 object-fit: cover;
+                object-position: left;
                 overflow: hidden;
             }
 

@@ -17,10 +17,11 @@ body {
     width: 500px;
     height: 400px; }
     .headlines #headlines-container .newsElement img {
-      max-width: 500px;
-      max-height: 400px;
+      width: 500px;
+      height: 400px;
       display: block;
       object-fit: cover;
+      object-position: left;
       overflow: hidden; }
     .headlines #headlines-container .newsElement a {
       text-decoration: none;
