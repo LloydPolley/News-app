@@ -1,0 +1,16 @@
+.searchNews {
+    #listNews {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        // position: relative;
+
+        .newsElement {
+            position: relative;
+            transition: 1s all;
+            background-color: grey;
+            flex: 40%;
+            min-height: 300px;
+        }
+    }
+}
